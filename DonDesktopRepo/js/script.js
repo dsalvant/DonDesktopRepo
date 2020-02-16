@@ -3,14 +3,15 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
-// For assistance: 
-  // Check the "Project Resources" section of the project instructions
-  // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
 /*** 
  * `quotes` array 
 ***/
-// My Empty array
+
+/* 
+Here i will create the Array, and store  all my quotes as object inside.
+The array needs five object and each object need to contain: the actual quote, the source, and the citation
+*/
 var quotes = [
     {
       quote: 'Whoever gives heed to instruction prospers, and blessed is the one who trusts in the Lord.',
@@ -47,29 +48,38 @@ var quotes = [
   /***
    * `getRandomQuote` function
   ***/
-    // 1. Create a variable that generates a random number
-    // between zero and the last index in the `quotes` array
-  
-    // 2. Use the random number variable and bracket notation 
-    // to grab a random object from the `quotes` array, and 
-    // store it in a variable
-  
-    // 3. Return the variable storing the random quote object
+/*
+ I created the Array above  with all my quotes abject inside ... 
+ now i need to create a function to go and get the random quote from the array above
+ inside that array i need to make sure that each quote is printed randomly on the page. 
+ Which means, every time someone click the 'show me another quote' button; the page should display a new quote from the list of all those quote above.
+ in other word: I need a "goTo QuotesAndRandomlly GetMe aQuote" type of function
+*/
   function getRandomQuote() {
     var myRandomQuote = Math.floor(Math.random() * quotes.length);
     return quotes[myRandomQuote]
   }
+  /* Testing my code my printing it to the console */
   console.log(getRandomQuote());
   
   /***
    * `printQuote` function
   ***/
-  
+ /*
+  Earlier I created a function to get a random quote, now I need to create another function let me print the quote to the page
+  So I need a "printAboveFunction" to the screen type of function; then add use contenating to add the extra element that are inside the {}. 
+  Ex: .contat ("Source", "citation", "Year", "Translation")
+  */
+
   function printQuote () {
     var printTheQuote = getRandomQuote();
     var theHTML = 
     '<p class="quote">' + printTheQuote.quote + '</p>';
       theHTML = theHTML.concat('<p class="source">' + printTheQuote.source);
+      /* 
+      To make sure that my source, citation, and translation print to the page;
+      I need to create some if statement
+      */
       if (printTheQuote.citation) {
         theHTML = theHTML.concat('<span class="citation">' + printTheQuote.citation + '</span>');
       }
@@ -80,20 +90,11 @@ var quotes = [
         theHTML = theHTML.concat('<br><span class="translation">' + printTheQuote.translation + '</span');
       }
       theHTML = theHTML.concat('</p>');
+      // Connect everything here with the innerHTML for the page.
     document.getElementById('quote-box').innerHTML = theHTML;
   
   
-  //   var myRandomQuote = getRandomQuote ();
-  //   var htmlString = 
-  //     '<p class="quote">' + myRandomQuote.quote + '</p>'
-  //     '<p class="source">' + myRandomQuote.source + 
-  //       if () {
-  //         '<span class="citation">' + myRandomQuote.citation + '</span>'
-  //       }
-  //       if () {
-  //         <span class="year">myRandomQuote.year</span>
-  //       }
-  //     '</p>'
+  
   }
   console.log(printQuote());
   //document.getElementById('quote-box').innerHTML = printQuote;
